@@ -9,19 +9,62 @@
 				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
 			</span>
 		</a>
-		
+
 		<div class="fr">
-		<h2>Overview <small>Why is Versatile Theme so awesome?</small></h2>
+		<h2>CSEnergy <small>Portfolio Overview</small></h2>
 		</div>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Welcome!</h1>
-				I don't want to bloat this Versatile Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
-				<p>
-					<a ui-sref="login" class="btn btn-primary btn-lg btn-white">Logout</a>
-				</p>
-				
+
+
+		<div class="container">
+			<h2>Assets</h2>
+			<div class="row">
+				<div class="col-md-2">
+    				<h4>Kogan Creek</h4>
+    				<p>Single 750MW unit Supercritical Coal-Fired Power Station</p>
+    				<a ui-sref="kogancreek" class="btn btn-primary">View KCk Report</a>
+				</div>
+				<div class="col-md-2">
+    				<h4>Callide B Unit 1</h4>
+    				<p>...</p>
+    				<a ui-sref="callideb-unit1" class="btn btn-primary">View CLB1 Report</a>
+				</div>
+				<div class="col-md-2">
+    				<h4>Callide B Unit 2</h4>
+    				<p>...</p>
+    				<a ui-sref="callideb-unit2" class="btn btn-primary">View CLB2 Report</a>
+				</div>
+				<div class="col-md-2">
+    				<h4>Callide C Unit 3</h4>
+    				<p>...</p>
+    				<a ui-sref="callidec-unit3" class="btn btn-primary">View CLC3 Report</a>
+				</div>
+				<div class="col-md-2">
+    				<h4>Callide C Unit 4</h4>
+    				<p>...</p>
+    				<a ui-sref="callidec-unit4" class="btn btn-primary">View CLC4 Report</a>
+				</div>
 			</div>
 		</div>
-	</snap-content>	
+
+		<div class="container">
+			<h3>Portfolio Generation</h3>
+			<canvas id="line" class="chart chart-line" chart-data="overview_line.data"
+			chart-labels="overview_line.labels" chart-series="overview_line.series" chart-options="overview_line.options"
+			chart-dataset-override="datasetOverride" chart-click="overview_line.onClick">
+			</canvas>
+		</div>
+
+		<div class="container">
+			<h3>Unit Efficiency Deviation</h3>
+			<canvas
+				id="bar"
+				class="chart chart-bar"
+	  			chart-data="overview_bar.data"
+				chart-labels="overview_bar.labels"
+				chart-series="overview_bar.series"
+				>
+			</canvas>
+		</div>
+
+	</snap-content>
 </div>
