@@ -32,25 +32,6 @@ angular.module('yapp')
     $scope.overview_line.onClick = function (points, evt) {
         console.log(points, evt);
     };
-    $scope.overview_line.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-    $scope.overview_line.options = {
-        scales: {
-            yAxes: [
-                {
-                    id: 'y-axis-1',
-                    type: 'linear',
-                    display: true,
-                    position: 'left'
-                },
-                {
-                    id: 'y-axis-2',
-                    type: 'linear',
-                    display: true,
-                    position: 'right'
-                }
-            ]
-        }
-    };
 
     // OVERVIEW BAR CHART
     $scope.overview_bar = {};
