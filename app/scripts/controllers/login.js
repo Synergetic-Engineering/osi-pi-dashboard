@@ -8,13 +8,31 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('LoginCtrl', function($scope, $location) {
+    .controller('LoginCtrl', function($scope, $state, $localStorage, $location, $http, $rootScope) {
 
-    $scope.submit = function() {
+        $scope.$storage = $localStorage;
+        if ($scope.$storage.authString) {
+            delete $scope.$storage.authString;
+        }
 
-      $location.path('/dashboard');
+        $scope.username = '';
+        $scope.password = '';
 
-      return false;
-    }
+        $scope.submit = function(data) {
+            if ($scope.username != '' && $scope.password != '') {
+                var authString = 'Basic '+btoa($scope.username+':'+$scope.password);
+                $http.get($rootScope.baseURL, {headers: {Authorization: authString}}).then(function(response) {
+                    $http.defaults.headers.common.Authorization = authString;
+                    $scope.$storage.authString = authString;
+                    $location.path('/dashboard');
+                },
+                function(err){
+                    $scope.errorMessage = 'Invalid credentials'
+                });
+                return true;
+            }
+            $scope.errorMessage = 'Please enter credentials'
+            return false
+        }
 
   });

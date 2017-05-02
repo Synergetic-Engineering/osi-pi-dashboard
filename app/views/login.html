@@ -13,25 +13,28 @@
 			<form role="form" class="bottom-75" ng-submit="submit()">
 			<div class="table-form">
 				<div class="form-groups">
+					<p ng-if="errorMessage" class="text-warning">
+						{{errorMessage}}
+					</p>
 					<div class="form-group">
-						<input type="text" class="form-control input-lg" id="" placeholder="EMAIL">
+						<input type="text" ng-model="username" class="form-control input-lg" id="" placeholder="USERNAME">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD">
+						<input type="password" ng-model="password" class="form-control input-lg" id="" placeholder="PASSWORD">
 					</div>
 				</div>
 				<div class="button-container">
 					<button type="submit" class="btn btn-default login"><img src="images/arrow.png" alt=""></button>
 				</div>
 			</div>
-			<div class="remember">
+			<!-- <div class="remember">
 				<label class="checkbox1" for="Option">
 					<input id="Option" type="checkbox" class="">
 					<span></span>
 				</label>
 				remember me
 				<span class="pass"> forgot password?</span>
-			</div>
+			</div> -->
 			</form>
 		</div>
 	</div>

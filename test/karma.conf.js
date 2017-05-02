@@ -23,6 +23,7 @@ module.exports = function(config) {
       '../bower_components/angular-snap/angular-snap.js',
       '../bower_components/chart.js/dist/Chart.js',
       '../bower_components/angular-chart.js/dist/angular-chart.js',
+      '../bower_components/ngstorage/ngStorage.js',
       // endbower
       '../app/scripts/**/*.js',
       //'../test/mock/**/*.js',

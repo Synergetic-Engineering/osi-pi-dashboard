@@ -25,13 +25,18 @@ angular.module('yapp', [
                 'ui.router',
                 'snap',
                 'ngAnimate',
-                'chart.js'
+                'chart.js',
+                'ngStorage'
             ])
         .config(function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-            $urlRouterProvider.otherwise('/login');
+            $urlRouterProvider.otherwise('/dashboard');
 
             angular.forEach(states, function (state) {
                 $stateProvider.state(state.name, state.state);
             });
-        });
+        })
+        .run(function($rootScope) {
+            $rootScope.baseURL = "https://pisrv/piwebapi/";
+        }
+        );
