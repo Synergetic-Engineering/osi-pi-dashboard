@@ -79,15 +79,6 @@ angular.module('yapp')
                 }
             };
 
-            // OVERVIEW BAR CHART
-            $scope.overview_bar = {};
-            $scope.overview_bar.labels = ['Kogan Creek Unit 1', 'Callide B Unit 1',  'Callide B Unit 2', 'Callide C Unit 3', 'Callide C Unit 4'];
-            $scope.overview_bar.series = ['Baseline', 'Actual'];
-            $scope.overview_bar.data = [
-                [65, 59, 80, 56, 55],
-                [28, 48, 40, 86, 27]
-            ];
-
         }
 
         $scope.updateSiteReport = function(site) {
