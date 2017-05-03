@@ -20,7 +20,7 @@ angular.module('yapp')
                 $location.path('/login');
             });
         } else {
-            $location.path('/login');
+            $state.go('login');
         }
 
         // Set-up side menu
@@ -140,6 +140,7 @@ angular.module('yapp')
                                             time: moment().format('MMM D YYYY, HH:mm'),
                                             comment: $scope.cascade_heaters[cascade_heater.Name].new_comment
                                         });
+                                        $scope.cascade_heaters[cascade_heater.Name].new_comment = '';
                                     })
                                 }
 
