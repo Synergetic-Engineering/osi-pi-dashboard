@@ -29,16 +29,19 @@ angular.module('yapp', [
                 'ngStorage'
             ])
         .config(function($stateProvider, $urlRouterProvider) {
+            // go to the overview dashboard by default (/dashboard doesn't actually exist as a concrete page)
             $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-            $urlRouterProvider.otherwise('/dashboard');
+            $urlRouterProvider.otherwise('/dashboard/overview');
 
+            // set up ui router states
             angular.forEach(states, function (state) {
                 $stateProvider.state(state.name, state.state);
             });
         })
         .run(function($rootScope) {
+            // CONFIG global base url of pi web api server
             $rootScope.baseURL = "https://pisrv/piwebapi/";
-            console.log(Chart.defaults.global);
+            // CONFIG colour of chart font (for easier readability on dark blue backgroud)
             Chart.defaults.global.defaultFontColor = "#eee"
         }
         );
