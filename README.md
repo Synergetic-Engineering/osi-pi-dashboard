@@ -18,3 +18,5 @@ Have the following installed globally
 ## Credits
 
 Built using the [Versatile Dashboard  Theme](https://github.com/start-angular/versatile-dashboard-theme)
+
+Charts use http://www.chartjs.org/ and https://github.com/jtblin/angular-chart.js
