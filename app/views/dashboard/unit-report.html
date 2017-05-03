@@ -1,0 +1,74 @@
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false" class="bg-dark">
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+
+		<div class="fr">
+		<h2>{{sites[currentSite].longname}} <small>- Report</small></h2>
+		</div>
+		<span class="glyphicon glyphicon-dashboard bg-fade"></span>
+		<div class="jumbotron">
+			<div class="container">
+				<form class="form-inline">
+					<h2>Time Selector</h2>
+					<div>
+						Start time: <input type="text" class="form-control" id="" ng-model="$storage.startTime"></input>
+						End time: <input type="text" class="form-control input-md" id="" ng-model="$storage.endTime"></input>
+						<button type="submit" class="btn btn-default" ng-click="updateSiteReport(currentSite)">Update</button>
+					</div>
+					<small>note: this only accepts <a href="https://techsupport.osisoft.com/Documentation/PI-Web-API/help/topics/time-strings.html">OSI Pi Time String</a> compliant input</small>
+				</form>
+
+				<div class="container">
+					<h2>Cascade Heater Performance</h2>
+					<p>Bypass Status: </p>
+					<canvas id="line" class="chart chart-line" chart-data="cascade_heater_report_line.data"
+					chart-labels="cascade_heater_report_line.labels" chart-series="cascade_heater_report_line.series"
+					>
+					</canvas>
+
+					<div ng-repeat="cascade_heater in cascade_heaters">
+						<h3>{{cascade_heater.Description}} ({{cascade_heater.Name}}) Operator Log</h3>
+
+						<div class="container">
+							<blockquote>
+								<p>{{cascade_heater.log[0].comment}} <small class="text-muted">{{cascade_heater.log[0].time}}</small></p>
+							</blockquote>
+						</div>
+
+						<div class="container">
+							<p><a class="btn btn-primary btn-sm btn-white" ng-click="cascade_heater.showLog = !cascade_heater.showLog">{{cascade_heater.showLog ? "Hide log history" : "Show log history"}}</a></p>
+							<table class="table" ng-show="cascade_heater.showLog">
+								<thead>
+									<tr> <th>Time</th> <th>Comment</th> </tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="l in cascade_heater.log"> <th scope="row">{{l.time}}</th> <td>{{l.comment}}</td> </tr>
+								</tbody>
+							</table>
+						</div>
+
+
+						<div class="container">
+							<form class="form-inline">
+								<textarea class="form-control" rows="1" id="" ng-model="cascade_heater.new_comment" placeholder="New comment"></textarea>
+								<button type="submit" class="btn btn-default" ng-click="cascade_heater.logComment()">Add comment to log</button>
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container">
+					<p><br/><a class="btn btn-primary btn-lg btn-white" ui-sref="overview">Back to Portfolio Overview</a></p>
+				</div>
+			</div>
+		</div>
+	</snap-content>
+</div>
